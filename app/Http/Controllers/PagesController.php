@@ -67,8 +67,8 @@ class PagesController extends Controller
     }
 
     public function escalafon(){
-        $tipoEscalafon=App\Escalafon::all();
-        //$tipoPerfil=App\Escalafon::paginate(5);
+        //$tipoEscalafon=App\Escalafon::all();
+        $tipoEscalafon=App\Escalafon::paginate(10);
         return view('escalafon',compact('tipoEscalafon'));
     }
 

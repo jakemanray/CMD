@@ -22,8 +22,9 @@ Route::get('moodleLoad','PagesController@moodleLoad')->name('moodleLoad');
 Route::get('moodleDownload','PagesController@moodleDownload')->name('moodleDownload');
 Route::get('asesoria','PagesController@asesoria')->name('asesoria');
 Route::get('administrador','PagesController@administrador')->name('administrador');
+
 Route::get('perfiles','PagesController@perfiles')->name('perfiles');
-Route::post('/','PagesController@crearPerfil')->name('profile.crearPerfil');
+Route::post('crearPerfil','PagesController@crearPerfil')->name('profile.crearPerfil');
 Route::get('editarPerfil/{id}','PagesController@editarPerfil')->name('profile.editarPerfil');
 Route::put('updatePerfil/{id}','PagesController@updatePerfil')->name('profile.updatePerfil');
 Route::delete('deletePerfil/{id}','PagesController@deletePerfil')->name('profile.deletePerfil');

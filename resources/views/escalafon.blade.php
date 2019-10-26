@@ -75,6 +75,7 @@
             @endforeach()
             </tbody>
             </table>
+            {{$tipoEscalafon->links()}}
         </div>
     </div>
     <div class="card-footer text-muted">

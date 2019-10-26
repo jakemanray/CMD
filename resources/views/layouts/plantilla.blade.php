@@ -55,7 +55,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:black; font-size:100%; padding: 15px 20px">
-                            <span class="icon-cloud"></span>&nbspAdministrador
+                            <span class="icon-user-check"></span>&nbspAdministrador
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{route('perfiles')}}">Perfiles</a>
