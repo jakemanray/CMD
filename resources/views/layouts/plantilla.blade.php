@@ -59,6 +59,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{route('perfiles')}}">Perfiles</a>
+                            <a class="dropdown-item" href="{{route('escalafon')}}">Escalafón</a>
                             <!--<a class="dropdown-item" href="{{route('moodleDownload')}}">Agregar Usuario</a>-->
 
                         </li>

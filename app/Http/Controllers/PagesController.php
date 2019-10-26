@@ -63,6 +63,57 @@ class PagesController extends Controller
     public function deletePerfil($id){
         $perfilDelete=App\Perfil::findOrFail($id);
         $perfilDelete->delete();
-        return back()->with('mensaje','Nota Eliminada');
+        return back()->with('mensaje','Perfil Eliminado');
+    }
+
+    public function escalafon(){
+        $tipoEscalafon=App\Escalafon::all();
+        //$tipoPerfil=App\Escalafon::paginate(5);
+        return view('escalafon',compact('tipoEscalafon'));
+    }
+
+    public function crearEscalafon(Request $request){
+        //return $request->all();
+        $request->validate([
+            'nombre'=> 'required',
+            'descripcion'=> 'required',
+            'sueldo'=> 'required'
+        ]);
+
+        $escalafonNuevo=new App\Escalafon;
+        $escalafonNuevo->nombre=$request->nombre;
+        $escalafonNuevo->descripcion=$request->descripcion;
+        $escalafonNuevo->sueldo=$request->sueldo;
+
+        $escalafonNuevo->save();
+        return back()->with('mensaje','Escalafón Agregado');
+
+    }
+    public function editarEscalafon($id){
+        $tipoEscalafon=App\Escalafon::findOrFail($id);
+        return view('profile.editarEscalafon',compact('tipoEscalafon'));
+    }
+
+
+    public function updateEscalafon(Request $request,$id){
+        $request->validate([
+            'nombre'=> 'required',
+            'descripcion'=> 'required',
+            'sueldo'=> 'required'
+        ]);
+
+        $escalafonUpdate=App\Escalafon::findOrFail($id);
+        $escalafonUpdate->nombre=$request->nombre;
+        $escalafonUpdate->descripcion=$request->descripcion;
+        $escalafonUpdate->sueldo=$request->sueldo;
+
+        $escalafonUpdate->save();
+        return back()->with('mensaje','Escalafón Actualizado');
+    }
+
+    public function deleteEscalafon($id){
+        $escalafonDelete=App\Escalafon::findOrFail($id);
+        $escalafonDelete->delete();
+        return back()->with('mensaje','Escalafón Eliminado');
     }
 }

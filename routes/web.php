@@ -27,3 +27,9 @@ Route::post('/','PagesController@crearPerfil')->name('profile.crearPerfil');
 Route::get('editarPerfil/{id}','PagesController@editarPerfil')->name('profile.editarPerfil');
 Route::put('updatePerfil/{id}','PagesController@updatePerfil')->name('profile.updatePerfil');
 Route::delete('deletePerfil/{id}','PagesController@deletePerfil')->name('profile.deletePerfil');
+
+Route::get('escalafon','PagesController@escalafon')->name('escalafon');
+Route::post('/','PagesController@crearEscalafon')->name('profile.crearEscalafon');
+Route::get('editarEscalafon/{id}','PagesController@editarEscalafon')->name('profile.editarEscalafon');
+Route::put('updateEscalafon/{id}','PagesController@updateEscalafon')->name('profile.updateEscalafon');
+Route::delete('deleteEscalafon/{id}','PagesController@deleteEscalafon')->name('profile.deleteEscalafon');
