@@ -53,8 +53,17 @@
                             <a class="dropdown-item" href="{{route('moodleDownload')}}">Descargar Backup</a>
 
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:black; font-size:100%; padding: 15px 20px">
+                            <span class="icon-cloud"></span>&nbspAdministrador
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{route('perfiles')}}">Perfiles</a>
+                            <!--<a class="dropdown-item" href="{{route('moodleDownload')}}">Agregar Usuario</a>-->
 
-                        <li class="nav-item active"><a href="{{route('administrador')}}" class="nav-link" style="font-size:100%; padding: 15px 20px"><span class="icon-user-check"></span>&nbspAdministrador</a></li>
+                        </li>
+
+                        <!--<li class="nav-item active"><a href="{{route('administrador')}}" class="nav-link" style="font-size:100%; padding: 15px 20px"><span class="icon-user-check"></span>&nbspAdministrador</a></li>-->
                     </ul>
 
                     <!-- Right Side Of Navbar -->

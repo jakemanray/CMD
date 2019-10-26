@@ -3,7 +3,7 @@
 @section('content')
 <div class="card text-center">
     <div class="card-header">
-        <h3 class="card-title">ADMINISTRADOR: Ingreso de Datos Perfiles</h3>
+        <h3 class="card-title">ADMINISTRADOR: Actualización de Datos Perfiles</h3>
     </div>
     <div class="card-body">
         <div class="container my-4">
@@ -15,7 +15,8 @@
                     </button>
                 </div>
             @endif
-            <form action="{{route('profile.crearPerfil')}}" method="POST">
+            <form action="{{route('profile.updatePerfil',$tipoPerfil->id)}}" method="POST">
+                @method('PUT')
                 @csrf
                 @error('nombre')
                     <div class="alert alert-danger">
@@ -33,38 +34,10 @@
                         </button>
                     </div>
                 @enderror
-                <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" value="{{old('nombre')}}">
-                <input type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2" value="{{old('descripcion')}}">
-                <button class="btn btn-secondary btn-block">Agregar</button>
+                <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" value="{{$tipoPerfil->nombre}}">
+                <input type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2" value="{{$tipoPerfil->descripcion}}">
+                <button class="btn btn-secondary btn-block">Actualizar</button>
             </form>
-            <table class="table">
-            <thead>
-                <tr>
-                <th scope="col">#id</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach($tipoPerfil as $item)
-                <tr>
-                <th scope="row">{{$item->id}}</th>
-                <td>{{$item->nombre}}</td>
-                <td>{{$item->descripcion}}</td>
-                <td>
-                <a href="{{route('profile.editarPerfil',$item)}}" class="btn btn-outline-secondary btn-sm">Editar</a>
-                <form action="{{route('profile.deletePerfil',$item)}}" method="POST" class="d-inline">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-outline-danger btn-sm" type="submit">Eliminar</button>
-                </form>
-                </td>
-                </tr>
-            @endforeach()
-            </tbody>
-            </table>
-            {{$tipoPerfil->links()}}
         </div>
     </div>
     <div class="card-footer text-muted">
@@ -74,5 +47,5 @@
                 var f=new Date();
                 document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear() + ". " + f.getHours() + ":" + f.getMinutes() +":"+f.getSeconds());
             </script>
-        </div>
+    </div>
 @endsection

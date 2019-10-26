@@ -18,24 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('moodleLoad',function(){
-    return view('moodleLoad');
-})->name('moodleLoad');
-Route::get('moodleDownload',function(){
-    return view('moodleDownload');
-})->name('moodleDownload');
-Route::get('asesoria',function(){
-    return view('asesoria');
-})->name('asesoria');
-Route::get('administrador',function(){
-    return view('administrador');
-})->name('administrador');
-Route::get('perfiles',function(){
-    return view('perfiles');
-})->name('perfiles');
-/*Route::resource('/users', 'UserController');
-Route::get('/users/editar/{id}','UserController@edit')->name('users.editar');
-/*Route::get('administrador', 'pageController@administrador')->name('administrador');
-Route::get('moodleLoad', 'pageController@moodleLoad')->name('moodleLoad');
-Route::get('moodleDownload', 'pageController@moodleDownload')->name('moodleDownload');
-Route::get('asesoria', 'pageController@asesoria')->name('asesoria');*/
+Route::get('moodleLoad','PagesController@moodleLoad')->name('moodleLoad');
+Route::get('moodleDownload','PagesController@moodleDownload')->name('moodleDownload');
+Route::get('asesoria','PagesController@asesoria')->name('asesoria');
+Route::get('administrador','PagesController@administrador')->name('administrador');
+Route::get('perfiles','PagesController@perfiles')->name('perfiles');
+Route::post('/','PagesController@crearPerfil')->name('profile.crearPerfil');
+Route::get('editarPerfil/{id}','PagesController@editarPerfil')->name('profile.editarPerfil');
+Route::put('updatePerfil/{id}','PagesController@updatePerfil')->name('profile.updatePerfil');
+Route::delete('deletePerfil/{id}','PagesController@deletePerfil')->name('profile.deletePerfil');
