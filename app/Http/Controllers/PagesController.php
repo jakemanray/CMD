@@ -7,6 +7,10 @@ use App;
 
 class PagesController extends Controller
 {
+    public function inicio(){
+        return view('welcome');
+    }
+
     public function moodleLoad(){
         return view('moodleLoad');
     }
@@ -115,5 +119,67 @@ class PagesController extends Controller
         $escalafonDelete=App\Escalafon::findOrFail($id);
         $escalafonDelete->delete();
         return back()->with('mensaje','Escalafón Eliminado');
+    }
+
+    public function facultad(){
+        $tipoFacultad=App\Facultad::all();
+        //$tipoEscalafon=App\Escalafon::paginate(10);
+        return view('facultad',compact('tipoFacultad'));
+    }
+
+    public function crearFacultad(Request $request){
+        //return $request->all();
+        $request->validate([
+            'nombre'=> 'required',
+            'descripcion'=> 'required'
+        ]);
+
+        $facultadNuevo=new App\Facultad;
+        $facultadNuevo->nombre=$request->nombre;
+        $facultadNuevo->descripcion=$request->descripcion;
+
+        $facultadNuevo->save();
+        return back()->with('mensaje','Facultad Agregada');
+
+    }
+
+    public function editarFacultad($id){
+        $tipoFacultad=App\Facultad::findOrFail($id);
+        return view('profile.editarFacultad',compact('tipoFacultad'));
+    }
+
+    public function updateFacultad(Request $request,$id){
+        $request->validate([
+            'nombre'=> 'required',
+            'descripcion'=> 'required'
+        ]);
+
+        $facultadUpdate=App\Facultad::findOrFail($id);
+        $facultadUpdate->nombre=$request->nombre;
+        $facultadUpdate->descripcion=$request->descripcion;
+
+        $facultadUpdate->save();
+        return back()->with('mensaje','Facultad Actualizada');
+    }
+
+    public function deleteFacultad($id){
+        $facultadDelete=App\Facultad::findOrFail($id);
+        $facultadDelete->delete();
+        return back()->with('mensaje','Facultad Eliminada');
+    }
+
+    public function usuarios(){
+        $tipoUsuario=App\User::all();
+        $tipoPerfil=App\Perfil::all();
+        $tipoEscalafon=App\Escalafon::all();
+        //$user=App\Perfil::paginate(5);
+        return view('usuarios',compact('tipoUsuario','tipoPerfil','tipoEscalafon'));
+    }
+
+    public function editarUsuarios($id){
+        $tipoUsuario=App\User::findOrFail($id);
+        $tipoPerfil=App\Perfil::all();
+        $tipoEscalafon=App\Escalafon::all();
+        return view('profile.editarUsuarios',compact('tipoUsuario','tipoPerfil','tipoEscalafon'));
     }
 }

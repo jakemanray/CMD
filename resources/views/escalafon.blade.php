@@ -46,7 +46,7 @@
             <input type="text" name="sueldo" placeholder="Sueldo" class="form-control mb-2" value="{{old('sueldo')}}">
             <button class="btn btn-secondary btn-block">Agregar</button>
         </form>
-        <table class="table">
+        <table class="table table-responsive-sm">
             <thead>
                 <tr>
                 <th scope="col">#id</th>
@@ -64,11 +64,11 @@
                 <td>{{$item->descripcion}}</td>
                 <td>{{$item->sueldo}}</td>
                 <td>
-                    <a href="{{route('profile.editarEscalafon',$item)}}" class="btn btn-outline-success btn-sm">Editar</a>
+                    <a href="{{route('profile.editarEscalafon',$item)}}" class="btn btn-outline-success btn-sm"><span class="fas fa-pen"></span>&nbspEditar</a>
                     <form action="{{route('profile.deleteEscalafon',$item)}}" method="POST" class="d-inline">
                         @method('DELETE')
                         @csrf
-                        <button class="btn btn-outline-danger btn-sm" type="submit">Eliminar</button>
+                        <button class="btn btn-outline-danger btn-sm" type="submit"><span class="icon-bin"></span>&nbspEliminar</button>
                     </form>
                 </td>
                 </tr>

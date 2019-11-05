@@ -11,11 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
+Route::get('/', 'PagesController@inicio')->name('inicio');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('moodleLoad','PagesController@moodleLoad')->name('moodleLoad');
@@ -34,3 +32,12 @@ Route::post('/','PagesController@crearEscalafon')->name('profile.crearEscalafon'
 Route::get('editarEscalafon/{id}','PagesController@editarEscalafon')->name('profile.editarEscalafon');
 Route::put('updateEscalafon/{id}','PagesController@updateEscalafon')->name('profile.updateEscalafon');
 Route::delete('deleteEscalafon/{id}','PagesController@deleteEscalafon')->name('profile.deleteEscalafon');
+
+Route::get('facultad','PagesController@facultad')->name('facultad');
+Route::post('crearFacultad','PagesController@crearFacultad')->name('profile.crearFacultad');
+Route::get('editarFacultad/{id}','PagesController@editarFacultad')->name('profile.editarFacultad');
+Route::put('updateFacultad/{id}','PagesController@updateFacultad')->name('profile.updateFacultad');
+Route::delete('deleteFacultad/{id}','PagesController@deleteFacultad')->name('profile.deleteFacultad');
+
+Route::get('usuarios','PagesController@usuarios')->name('usuarios');
+Route::get('editarUsuarios/{id}','PagesController@editarUsuarios')->name('profile.editarUsuarios');

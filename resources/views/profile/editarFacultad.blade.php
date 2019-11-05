@@ -3,11 +3,11 @@
 @section('content')
 <div class="card text-center">
     <div class="card-header">
-        <h3 class="card-title">ADMINISTRADOR: Actualización de Datos Perfiles</h3>
+        <h3 class="card-title">ADMINISTRADOR: Actualización de Datos Facultades</h3>
     </div>
     <div class="card-body">
         <div class="container my-4">
-            @if (session('mensaje'))
+        @if (session('mensaje'))
                 <div class="alert alert-success">
                     {{session('mensaje')}}
 
@@ -17,11 +17,11 @@
 
 
                     </button>
-                    <div class="d-inline" style="text-align:rigth"><a href="{{route('perfiles')}}" class="btn btn-outline-success" >Volver</a></div>
+                    <div class="d-inline" style="text-align:rigth"><a href="{{route('facultad')}}" class="btn btn-outline-success" >Volver</a></div>
                 </div>
 
             @endif
-            <form action="{{route('profile.updatePerfil',$tipoPerfil->id)}}" method="POST">
+            <form action="{{route('profile.updateFacultad',$tipoFacultad->id)}}" method="POST">
                 @method('PUT')
                 @csrf
                 @error('nombre')
@@ -40,18 +40,19 @@
                         </button>
                     </div>
                 @enderror
-                <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" value="{{$tipoPerfil->nombre}}">
-                <input type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2" value="{{$tipoPerfil->descripcion}}">
+                <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" value="{{$tipoFacultad->nombre}}">
+                <input type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2" value="{{$tipoFacultad->descripcion}}">
                 <button class="btn btn-secondary btn-block">Actualizar</button>
             </form>
         </div>
     </div>
     <div class="card-footer text-muted">
-            <script type="text/javascript">
-                var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-                var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
-                var f=new Date();
-                document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear() + ". " + f.getHours() + ":" + f.getMinutes() +":"+f.getSeconds());
-            </script>
+        <script type="text/javascript">
+            var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+            var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+            var f=new Date();
+            document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear() + ". " + f.getHours() + ":" + f.getMinutes() +":"+f.getSeconds());
+        </script>
     </div>
+</div>
 @endsection

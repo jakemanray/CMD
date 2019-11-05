@@ -3,9 +3,8 @@
 @section('content')
 <div class="card text-center">
     <div class="card-header">
-        <h3 class="card-title">ADMINISTRADOR: Ingreso de Datos Perfiles</h3>
+        <h3 class="card-title">ADMINISTRADOR: Ingreso de Datos Facultades</h3>
     </div>
-
     <div class="card-body">
         <div class="container my-4">
             @if (session('mensaje'))
@@ -17,7 +16,7 @@
                     </button>
                 </div>
             @endif
-            <form action="{{route('profile.crearPerfil')}}" method="POST">
+            <form action="{{route('profile.crearFacultad')}}" method="POST">
                 @csrf
                 @error('nombre')
                     <div class="alert alert-danger">
@@ -39,7 +38,7 @@
                 <input type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2" value="{{old('descripcion')}}">
                 <button class="btn btn-secondary btn-block">Agregar</button>
             </form>
-            <table class="table table-responsive-sm">
+        <table class="table table-responsive-sm">
             <thead>
                 <tr>
                 <th scope="col">#id</th>
@@ -49,14 +48,14 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach($tipoPerfil as $item)
+            @foreach($tipoFacultad as $item)
                 <tr>
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->nombre}}</td>
                 <td>{{$item->descripcion}}</td>
                 <td>
-                <a href="{{route('profile.editarPerfil',$item)}}" class="btn btn-outline-success btn-sm"><span class="fas fa-pen"></span>&nbspEditar</a>
-                <form action="{{route('profile.deletePerfil',$item)}}" method="POST" class="d-inline">
+                <a href="{{route('profile.editarFacultad',$item)}}" class="btn btn-outline-success btn-sm"><span class="fas fa-pen"></span>&nbspEditar</a>
+                <form action="{{route('profile.deleteFacultad',$item)}}" method="POST" class="d-inline">
                     @method('DELETE')
                     @csrf
                     <button class="btn btn-outline-danger btn-sm" type="submit"><span class="icon-bin"></span>&nbspEliminar</button>
@@ -66,15 +65,15 @@
             @endforeach()
             </tbody>
             </table>
-            {{$tipoPerfil->links()}}
         </div>
     </div>
     <div class="card-footer text-muted">
-            <script type="text/javascript">
-                var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-                var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
-                var f=new Date();
-                document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear() + ". " + f.getHours() + ":" + f.getMinutes() +":"+f.getSeconds());
-            </script>
+        <script type="text/javascript">
+            var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+            var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+            var f=new Date();
+            document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear() + ". " + f.getHours() + ":" + f.getMinutes() +":"+f.getSeconds());
+        </script>
     </div>
+</div>
 @endsection

@@ -17,6 +17,8 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -25,6 +27,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
+
 
 
 </head>
@@ -43,7 +46,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active"><a href="{{route('asesoria')}}" class="nav-link"  style="font-size:100%; padding: 15px 20px; display:block"><span class="icon-spinner10"></span>&nbspAsesoria</a></li>
+                        <li class="nav-item active"><a href="{{route('home')}}" class="nav-link" style="font-size:100%; padding: 15px 20px"><span class="icon-home"></span>&nbspInicio</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="{{route('asesoria')}}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:black; font-size:100%; padding: 15px 20px">
+                            <span class="icon-spinner10"></span>&nbspAsesoria
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href=""><span class="fa fa-calendar"></span>&nbspPlanificar Asesoría</a>
+                            <a class="dropdown-item" href=""><span class="fa fa-calendar-check-o"></span>&nbspAsignar Asesoría</a>
+
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:black; font-size:100%; padding: 15px 20px">
+                            <span class="fas fa-chalkboard-teacher"></span>&nbspCapacitación
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href=""><span class="fa fa-calendar"></span>&nbspPlanificar Capacitación</a>
+                            <a class="dropdown-item" href=""><span class="fa fa-calendar-check-o"></span>&nbspAsignar Capacitación</a>
+
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:black; font-size:100%; padding: 15px 20px">
                             <span class="icon-cloud"></span>&nbspMoodle
@@ -58,8 +79,11 @@
                             <span class="icon-user-check"></span>&nbspAdministrador
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('perfiles')}}">Perfiles</a>
-                            <a class="dropdown-item" href="{{route('escalafon')}}">Escalafón</a>
+                            <a class="dropdown-item" href="{{route('usuarios')}}"><span class="fa fa-user-plus"></span>&nbsp&nbspUsuario</a>
+                            <a class="dropdown-item" href="{{route('perfiles')}}"><span class="icon-address-book"></span>&nbspPerfiles</a>
+                            <a class="dropdown-item" href="{{route('escalafon')}}"><span class="icon-file-text"></span>&nbspEscalafón</a>
+                            <a class="dropdown-item" href="{{route('facultad')}}"><span class="fas fa-university"></span>&nbspFacultad</a>
+                            <a class="dropdown-item" href=""><span class="far fa-building"></span>&nbspDepartamento</a>
                             <!--<a class="dropdown-item" href="{{route('moodleDownload')}}">Agregar Usuario</a>-->
 
                         </li>
