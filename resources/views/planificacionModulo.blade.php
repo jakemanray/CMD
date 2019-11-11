@@ -3,7 +3,7 @@
 @section('content')
 <div class="card text-center">
     <div class="card-header">
-        <h3 class="card-title">ADMINISTRADOR: Ingreso de Datos Facultades</h3>
+        <h3 class="card-title">CAPACITACIÓN: Ingreso de Módulos</h3>
     </div>
     <div class="card-body">
         <div class="container my-4">
@@ -16,7 +16,7 @@
                     </button>
                 </div>
             @endif
-            <form action="{{route('profile.crearFacultad')}}" method="POST">
+            <form action="{{route('profile.crearModulo')}}" method="POST">
                 @csrf
                 @error('nombre')
                     <div class="alert alert-danger">
@@ -48,14 +48,14 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach($tipoFacultad as $item)
+            @foreach($tipoModulo as $item)
                 <tr>
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->nombre}}</td>
                 <td>{{$item->descripcion}}</td>
                 <td>
-                <a href="{{route('profile.editarFacultad',$item)}}" class="btn btn-outline-success btn-sm"><span class="fas fa-pen"></span>&nbspEditar</a>
-                <form action="{{route('profile.deleteFacultad',$item)}}" method="POST" class="d-inline">
+                <a href="{{route('profile.editarModulo',$item)}}" class="btn btn-outline-success btn-sm"><span class="fas fa-pen"></span>&nbspEditar</a>
+                <form action="{{route('profile.deleteModulo',$item)}}" method="POST" class="d-inline">
                     @method('DELETE')
                     @csrf
                     <button class="btn btn-outline-danger btn-sm" type="submit"><span class="icon-bin"></span>&nbspEliminar</button>
@@ -65,7 +65,6 @@
             @endforeach()
             </tbody>
             </table>
-            {{$tipoFacultad->links()}}
         </div>
     </div>
     <div class="card-footer text-muted">

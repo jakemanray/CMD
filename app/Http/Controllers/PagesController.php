@@ -122,8 +122,8 @@ class PagesController extends Controller
     }
 
     public function facultad(){
-        $tipoFacultad=App\Facultad::all();
-        //$tipoEscalafon=App\Escalafon::paginate(10);
+        //$tipoFacultad=App\Facultad::all();
+        $tipoFacultad=App\Facultad::paginate(10);
         return view('facultad',compact('tipoFacultad'));
     }
 
@@ -168,6 +168,30 @@ class PagesController extends Controller
         return back()->with('mensaje','Facultad Eliminada');
     }
 
+    public function departamento(){
+        $tipoFacultad=App\Facultad::all();
+        $tipoDepartamento=App\Departamento::all();
+        //$tipoEscalafon=App\Escalafon::paginate(10);
+        //return view('facultad',compact('tipoFacultad'));
+        return view('departamento',compact('tipoFacultad','tipoDepartamento'));
+    }
+
+    public function crearDepartamento(Request $request){
+        //return $request->all();
+        $request->validate([
+            'nombre'=> 'required',
+            'idFacultad'=> 'required'
+        ]);
+
+        $departamentoNuevo=new App\Departamento;
+        $departamentoNuevo->nombre=$request->nombre;
+        $departamentoNuevo->idFacultad=$request->idFacultad;
+
+        $departamentoNuevo->save();
+        return back()->with('mensaje','Departamento Agregado');
+
+    }
+
     public function usuarios(){
         $tipoUsuario=App\User::all();
         $tipoPerfil=App\Perfil::all();
@@ -181,5 +205,60 @@ class PagesController extends Controller
         $tipoPerfil=App\Perfil::all();
         $tipoEscalafon=App\Escalafon::all();
         return view('profile.editarUsuarios',compact('tipoUsuario','tipoPerfil','tipoEscalafon'));
+    }
+
+    public function planificacionCapacitacion(){
+        //$tipoFacultad=App\Facultad::all();
+        //$tipoDepartamento=App\Departamento::all();
+        //$tipoEscalafon=App\Escalafon::paginate(10);
+        //return view('facultad',compact('tipoFacultad'));
+        return view('planificacionCapacitacion');
+    }
+
+
+    public function planificacionModulo(){
+        $tipoModulo=App\moduloCapacitacion::all();
+        return view('planificacionModulo',compact('tipoModulo'));
+    }
+
+    public function crearModulo(Request $request){
+        //return $request->all();
+        $request->validate([
+            'nombre'=> 'required',
+            'descripcion'=> 'required'
+        ]);
+
+        $moduloNuevo=new App\moduloCapacitacion;
+        $moduloNuevo->nombre=$request->nombre;
+        $moduloNuevo->descripcion=$request->descripcion;
+
+        $moduloNuevo->save();
+        return back()->with('mensaje','Módulo Agregado');
+
+    }
+
+    public function deleteModulo($id){
+        $moduloDelete=App\moduloCapacitacion::findOrFail($id);
+        $moduloDelete->delete();
+        return back()->with('mensaje','Modulo Eliminado');
+    }
+
+    public function editarModulo($id){
+        $tipoModulo=App\moduloCapacitacion::findOrFail($id);
+        return view('profile.editarModulo',compact('tipoModulo'));
+    }
+
+    public function updateModulo(Request $request,$id){
+        $request->validate([
+            'nombre'=> 'required',
+            'descripcion'=> 'required'
+        ]);
+
+        $moduloUpdate=App\moduloCapacitacion::findOrFail($id);
+        $moduloUpdate->nombre=$request->nombre;
+        $moduloUpdate->descripcion=$request->descripcion;
+
+        $moduloUpdate->save();
+        return back()->with('mensaje','Módulo Actualizado');
     }
 }

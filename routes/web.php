@@ -39,5 +39,16 @@ Route::get('editarFacultad/{id}','PagesController@editarFacultad')->name('profil
 Route::put('updateFacultad/{id}','PagesController@updateFacultad')->name('profile.updateFacultad');
 Route::delete('deleteFacultad/{id}','PagesController@deleteFacultad')->name('profile.deleteFacultad');
 
+Route::get('departamento','PagesController@departamento')->name('departamento');
+Route::post('crearDepartamento','PagesController@crearDepartamento')->name('profile.crearDepartamento');
+
+Route::get('planificacionCapacitacion','PagesController@planificacionCapacitacion')->name('planificacionCapacitacion');
+
+Route::get('planificacionModulo','PagesController@planificacionModulo')->name('planificacionModulo');
+Route::post('crearModulo','PagesController@crearModulo')->name('profile.crearModulo');
+Route::get('editarModulo/{id}','PagesController@editarModulo')->name('profile.editarModulo');
+Route::put('updateModulo/{id}','PagesController@updateModulo')->name('profile.updateModulo');
+Route::delete('deleteModulo/{id}','PagesController@deleteModulo')->name('profile.deleteModulo');
+
 Route::get('usuarios','PagesController@usuarios')->name('usuarios');
 Route::get('editarUsuarios/{id}','PagesController@editarUsuarios')->name('profile.editarUsuarios');

@@ -61,7 +61,8 @@
                             <span class="fas fa-chalkboard-teacher"></span>&nbspCapacitación
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href=""><span class="fa fa-calendar"></span>&nbspPlanificar Capacitación</a>
+                            <a class="dropdown-item" href="{{route('planificacionModulo')}}"><span class="fas fa-book-open"></span>&nbspMódulos</a>
+                            <a class="dropdown-item" href="{{route('planificacionCapacitacion')}}"><span class="fa fa-calendar"></span>&nbspPlanificar Capacitación</a>
                             <a class="dropdown-item" href=""><span class="fa fa-calendar-check-o"></span>&nbspAsignar Capacitación</a>
 
                         </li>
@@ -83,7 +84,7 @@
                             <a class="dropdown-item" href="{{route('perfiles')}}"><span class="icon-address-book"></span>&nbspPerfiles</a>
                             <a class="dropdown-item" href="{{route('escalafon')}}"><span class="icon-file-text"></span>&nbspEscalafón</a>
                             <a class="dropdown-item" href="{{route('facultad')}}"><span class="fas fa-university"></span>&nbspFacultad</a>
-                            <a class="dropdown-item" href=""><span class="far fa-building"></span>&nbspDepartamento</a>
+                            <a class="dropdown-item" href="{{route('departamento')}}"><span class="far fa-building"></span>&nbspDepartamento</a>
                             <!--<a class="dropdown-item" href="{{route('moodleDownload')}}">Agregar Usuario</a>-->
 
                         </li>
