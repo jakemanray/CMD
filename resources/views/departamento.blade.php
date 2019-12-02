@@ -36,9 +36,10 @@
                 @enderror
 
                 <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" value="{{old('nombre')}}">
+                <!--<input type="text" name="idFacultad" placeholder="Facultad" class="form-control mb-2" value="{{old('idFacultad')}}">-->
                 <div class="form-group row">
                     <div class="col-md-12">
-                        <select name="nombre" id="id" class="form-control">
+                        <select name="idFacultad" id="idFacultad" class="form-control">
                             @foreach($tipoFacultad as $itemFacultad)
                                 <option value="{{$itemFacultad->id}}">{{$itemFacultad->nombre}}</option>
                             @endforeach()
@@ -60,13 +61,8 @@
             @foreach($tipoDepartamento as $item)
                 <tr>
                 <th scope="row">{{$item->id}}</th>
-                <td>{{$item->nombre}}</td>
-                @foreach($tipoFacultad as $itemFacultad)
-                    @if ({{$itemFacultad->id}})=({{$item->idfacultad}})
-                    <td>"Hola"</td>
-                    @endif
-                @endforeach()
-                <td>{{$item->idfacultad}}</td>
+                <td scope="row">{{$item->nombre}}</td>
+                <td scope="row">{{$item->idfacultad}}</td>
                 <td>
                 <a href="" class="btn btn-outline-success btn-sm"><span class="fas fa-pen"></span>&nbspEditar</a>
                 <form action="" method="POST" class="d-inline">

@@ -27,6 +27,12 @@ Route::get('editarPerfil/{id}','PagesController@editarPerfil')->name('profile.ed
 Route::put('updatePerfil/{id}','PagesController@updatePerfil')->name('profile.updatePerfil');
 Route::delete('deletePerfil/{id}','PagesController@deletePerfil')->name('profile.deletePerfil');
 
+Route::get('roles','PagesController@roles')->name('roles');
+Route::post('crearRol','PagesController@crearRol')->name('profile.crearRol');
+Route::get('editarRol/{id}','PagesController@editarRol')->name('profile.editarRol');
+Route::put('updateRol/{id}','PagesController@updateRol')->name('profile.updateRol');
+Route::delete('deleteRol/{id}','PagesController@deleteRol')->name('profile.deleteRol');
+
 Route::get('escalafon','PagesController@escalafon')->name('escalafon');
 Route::post('/','PagesController@crearEscalafon')->name('profile.crearEscalafon');
 Route::get('editarEscalafon/{id}','PagesController@editarEscalafon')->name('profile.editarEscalafon');

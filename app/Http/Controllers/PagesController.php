@@ -70,6 +70,53 @@ class PagesController extends Controller
         return back()->with('mensaje','Perfil Eliminado');
     }
 
+    public function roles(){
+        $tipoRoles=App\rols::all();
+
+        return view('roles',compact('tipoRoles'));
+    }
+
+    public function crearRol(Request $request){
+
+        $request->validate([
+            'nombre'=> 'required',
+            'descripcion'=> 'required'
+        ]);
+
+        $rolNuevo=new App\rols;
+        $rolNuevo->nombre=$request->nombre;
+        $rolNuevo->descripcion=$request->descripcion;
+
+        $rolNuevo->save();
+        return back()->with('mensaje','Rol Agregado');
+
+    }
+
+    public function editarRol($id){
+        $tipoRoles=App\rols::findOrFail($id);
+        return view('profile.editarRol',compact('tipoRoles'));
+    }
+
+    public function updateRol(Request $request,$id){
+        $request->validate([
+            'nombre'=> 'required',
+            'descripcion'=> 'required'
+        ]);
+
+        $rolUpdate=App\rols::findOrFail($id);
+        $rolUpdate->nombre=$request->nombre;
+        $rolUpdate->descripcion=$request->descripcion;
+
+        $rolUpdate->save();
+        return back()->with('mensaje','Rol Actualizado');
+    }
+
+    public function deleteRol($id){
+        $rolDelete=App\rols::findOrFail($id);
+        $rolDelete->delete();
+        return back()->with('mensaje','Rol Eliminado');
+    }
+
     public function escalafon(){
         //$tipoEscalafon=App\Escalafon::all();
         $tipoEscalafon=App\Escalafon::paginate(10);

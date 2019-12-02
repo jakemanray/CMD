@@ -80,11 +80,13 @@
                             <span class="icon-user-check"></span>&nbspAdministrador
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('usuarios')}}"><span class="fa fa-user-plus"></span>&nbsp&nbspUsuario</a>
+                            <a class="dropdown-item" href="{{route('usuarios')}}"><span class="fa fa-user-plus"></span>&nbspUsuario</a>
                             <a class="dropdown-item" href="{{route('perfiles')}}"><span class="icon-address-book"></span>&nbspPerfiles</a>
+                            <a class="dropdown-item" href="{{route('roles')}}"><span class="far fa-id-badge"></span>&nbsp&nbspRol</a>
                             <a class="dropdown-item" href="{{route('escalafon')}}"><span class="icon-file-text"></span>&nbspEscalafón</a>
                             <a class="dropdown-item" href="{{route('facultad')}}"><span class="fas fa-university"></span>&nbspFacultad</a>
                             <a class="dropdown-item" href="{{route('departamento')}}"><span class="far fa-building"></span>&nbspDepartamento</a>
+
                             <!--<a class="dropdown-item" href="{{route('moodleDownload')}}">Agregar Usuario</a>-->
 
                         </li>
