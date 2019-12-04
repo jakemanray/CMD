@@ -48,7 +48,7 @@ Route::delete('deleteFacultad/{id}','PagesController@deleteFacultad')->name('pro
 Route::get('departamento','PagesController@departamento')->name('departamento');
 Route::post('crearDepartamento','PagesController@crearDepartamento')->name('profile.crearDepartamento');
 
-Route::get('planificacionCapacitacion','PagesController@planificacionCapacitacion')->name('planificacionCapacitacion');
+
 
 Route::get('planificacionModulo','PagesController@planificacionModulo')->name('planificacionModulo');
 Route::post('crearModulo','PagesController@crearModulo')->name('profile.crearModulo');
@@ -58,3 +58,9 @@ Route::delete('deleteModulo/{id}','PagesController@deleteModulo')->name('profile
 
 Route::get('usuarios','PagesController@usuarios')->name('usuarios');
 Route::get('editarUsuarios/{id}','PagesController@editarUsuarios')->name('profile.editarUsuarios');
+
+Route::get('planificacionCapacitacion','PagesController@planificacionCapacitacion')->name('planificacionCapacitacion');
+Route::post('crearPlanCapacitacion','PagesController@crearPlanCapacitacion')->name('profile.crearPlanCapacitacion');
+Route::get('editarPlanCapacitacion/{id}','PagesController@editarPlanCapacitacion')->name('profile.editarPlanCapacitacion');
+Route::put('updatePlanCapacitacion/{id}','PagesController@updatePlanCapacitacion')->name('profile.updatePlanCapacitacion');
+Route::delete('deletePlanCapacitacion/{id}','PagesController@deletePlanCapacitacion')->name('profile.deletePlanCapacitacion');

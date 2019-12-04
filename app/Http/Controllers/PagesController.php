@@ -218,8 +218,7 @@ class PagesController extends Controller
     public function departamento(){
         $tipoFacultad=App\Facultad::all();
         $tipoDepartamento=App\Departamento::all();
-        //$tipoEscalafon=App\Escalafon::paginate(10);
-        //return view('facultad',compact('tipoFacultad'));
+
         return view('departamento',compact('tipoFacultad','tipoDepartamento'));
     }
 
@@ -227,12 +226,12 @@ class PagesController extends Controller
         //return $request->all();
         $request->validate([
             'nombre'=> 'required',
-            'idFacultad'=> 'required'
+            'facultad_id'=> 'required'
         ]);
 
         $departamentoNuevo=new App\Departamento;
         $departamentoNuevo->nombre=$request->nombre;
-        $departamentoNuevo->idFacultad=$request->idFacultad;
+        $departamentoNuevo->facultad_id=$request->facultad_id;
 
         $departamentoNuevo->save();
         return back()->with('mensaje','Departamento Agregado');
@@ -252,14 +251,6 @@ class PagesController extends Controller
         $tipoPerfil=App\Perfil::all();
         $tipoEscalafon=App\Escalafon::all();
         return view('profile.editarUsuarios',compact('tipoUsuario','tipoPerfil','tipoEscalafon'));
-    }
-
-    public function planificacionCapacitacion(){
-        //$tipoFacultad=App\Facultad::all();
-        //$tipoDepartamento=App\Departamento::all();
-        //$tipoEscalafon=App\Escalafon::paginate(10);
-        //return view('facultad',compact('tipoFacultad'));
-        return view('planificacionCapacitacion');
     }
 
 
@@ -307,5 +298,64 @@ class PagesController extends Controller
 
         $moduloUpdate->save();
         return back()->with('mensaje','Módulo Actualizado');
+    }
+
+    public function planificacionCapacitacion(){
+        $tipoPlanCapacitacion=App\PlanCapacitacion::all();
+        return view('planificacionCapacitacion',compact('tipoPlanCapacitacion'));
+    }
+
+    public function crearPlanCapacitacion(Request $request){
+        //return $request->all();
+        $request->validate([
+            'nombre'=> 'required',
+            'descripcion'=> 'required',
+            'fechaInicio'=> 'required',
+            'fechaTermino'=> 'required',
+            'cantidadSCT'=> 'required'
+        ]);
+
+        $planCapacitacionNuevo=new App\PlanCapacitacion;
+        $planCapacitacionNuevo->nombre=$request->nombre;
+        $planCapacitacionNuevo->descripcion=$request->descripcion;
+        $planCapacitacionNuevo->fechaInicio=$request->fechaInicio;
+        $planCapacitacionNuevo->fechaTermino=$request->fechaTermino;
+        $planCapacitacionNuevo->cantidadSCT=$request->cantidadSCT;
+
+        $planCapacitacionNuevo->save();
+        return back()->with('mensaje','Plan de Capacitación Agregado');
+
+    }
+
+    public function editarPlanCapacitacion($id){
+        $tipoPlanCapacitacion=App\PlanCapacitacion::findOrFail($id);
+        return view('profile.editarPlanCapacitacion',compact('tipoPlanCapacitacion'));
+    }
+
+    public function updatePlanCapacitacion(Request $request,$id){
+        $request->validate([
+            'nombre'=> 'required',
+            'descripcion'=> 'required',
+            'fechaInicio'=> 'required',
+            'fechaTermino'=> 'required',
+            'cantidadSCT'=> 'required'
+        ]);
+
+        $planCapacitacionUpdate=App\PlanCapacitacion::findOrFail($id);
+        $planCapacitacionUpdate->nombre=$request->nombre;
+        $planCapacitacionUpdate->descripcion=$request->descripcion;
+        $planCapacitacionUpdate->fechaInicio=$request->fechaInicio;
+        $planCapacitacionUpdate->fechaTermino=$request->fechaTermino;
+        $planCapacitacionUpdate->cantidadSCT=$request->cantidadSCT;
+
+
+        $planCapacitacionUpdate->save();
+        return back()->with('mensaje','Plan de Capacitación Actualizado');
+    }
+
+    public function deletePlanCapacitacion($id){
+        $planCapacitacionDelete=App\PlanCapacitacion::findOrFail($id);
+        $planCapacitacionDelete->delete();
+        return back()->with('mensaje','Plan de Capacitación Eliminado');
     }
 }

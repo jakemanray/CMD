@@ -16,7 +16,7 @@ class CreateDepartamentosTable extends Migration
         Schema::create('departamentos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->integer('idfacultad');
+            $table->unsignedInteger('facultad_id'); // Relación con Facultad
             $table->timestamps();
         });
     }

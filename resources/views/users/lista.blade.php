@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>Lista de Usuarios}}</span>
+                    <span>Lista de Usuarios</span>
                     <a href="" class="btn btn-primary btn-sm">Nuevo Usuario</a>
                 </div>
 

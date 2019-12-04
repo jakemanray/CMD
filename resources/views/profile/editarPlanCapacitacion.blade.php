@@ -42,7 +42,15 @@
                 @enderror
                 @error('fechaInicio')
                     <div class="alert alert-danger">
-                        La fecha es obligatoria
+                        La fecha de inicio es obligatoria
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @enderror
+                @error('fechaTermino')
+                    <div class="alert alert-danger">
+                        La fecha de termino es obligatoria
                         <button type="button" class="close" data-dismiss="alert" aria-label="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -56,10 +64,37 @@
                         </button>
                     </div>
                 @enderror
-                <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" value="{{$tipoPlanCapacitacion->nombre}}">
-                <input type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2" value="{{$tipoPlanCapacitacion->descripcion}}">
-                <input type="date" name="fechaInicio" placeholder="Fecha de Inicio" class="form-control mb-2" value="{{$tipoPlanCapacitacion->fechaInicio}}">
-                <input type="text" name="cantidadSCT" placeholder="Cantidad de SCT" class="form-control mb-2" value="{{$tipoPlanCapacitacion->cantidadSCT}}">
+                <div class="form-group row text-left">
+                    <label class="col-sm-2 col-form-label">Plan Capacitación: </label>
+                    <div class="col-sm-10">
+                        <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" value="{{$tipoPlanCapacitacion->nombre}}">
+                    </div>
+                </div>
+                <div class="form-group row text-left">
+                    <label class="col-sm-2 col-form-label">Descripción: </label>
+                    <div class="col-sm-10">
+                        <input type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2" value="{{$tipoPlanCapacitacion->descripcion}}">
+                    </div>
+                </div>
+                <div class="form-group row text-left">
+                    <label class="col-sm-2 col-form-label">Fecha Inicio: </label>
+                    <div class="col-sm-10">
+                        <input type="date" name="fechaInicio" placeholder="Fecha de Inicio" class="form-control mb-2" value="{{$tipoPlanCapacitacion->fechaInicio}}">
+                    </div>
+                </div>
+                <div class="form-group row text-left">
+                    <label class="col-sm-2 col-form-label">Fecha Termino: </label>
+                    <div class="col-sm-10">
+                        <input type="date" name="fechaTermino" placeholder="Fecha de Termino" class="form-control mb-2" value="{{$tipoPlanCapacitacion->fechaTermino}}">
+                    </div>
+                </div>
+                <div class="form-group row text-left">
+                    <label class="col-sm-2 col-form-label">Cantidad de SCT: </label>
+                    <div class="col-sm-10">
+                        <input type="text" name="cantidadSCT" placeholder="Cantidad de SCT" class="form-control mb-2" value="{{$tipoPlanCapacitacion->cantidadSCT}}">
+                    </div>
+                </div>
+
                 <button class="btn btn-secondary btn-block">Actualizar</button>
             </form>
         </div>

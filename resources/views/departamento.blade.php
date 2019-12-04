@@ -36,13 +36,14 @@
                 @enderror
 
                 <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" value="{{old('nombre')}}">
-                <!--<input type="text" name="idFacultad" placeholder="Facultad" class="form-control mb-2" value="{{old('idFacultad')}}">-->
+
+
                 <div class="form-group row">
                     <div class="col-md-12">
-                        <select name="idFacultad" id="idFacultad" class="form-control">
-                            @foreach($tipoFacultad as $itemFacultad)
-                                <option value="{{$itemFacultad->id}}">{{$itemFacultad->nombre}}</option>
-                            @endforeach()
+                        <select name="facultad_id" id="facultad_id" class="form-control">
+                        @foreach($tipoFacultad as $item)
+                                <option value={{$item->id}}>{{$item->nombre}}</option>
+                        @endforeach
                         </select>
                     </div>
                 </div>
@@ -62,7 +63,7 @@
                 <tr>
                 <th scope="row">{{$item->id}}</th>
                 <td scope="row">{{$item->nombre}}</td>
-                <td scope="row">{{$item->idfacultad}}</td>
+                <td scope="row">{{$item->facultad->nombre}}</td>
                 <td>
                 <a href="" class="btn btn-outline-success btn-sm"><span class="fas fa-pen"></span>&nbspEditar</a>
                 <form action="" method="POST" class="d-inline">
