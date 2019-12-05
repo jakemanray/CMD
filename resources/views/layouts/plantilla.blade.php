@@ -62,7 +62,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{route('planificacionModulo')}}"><span class="fas fa-book-open"></span>&nbspMódulos</a>
-                            <a class="dropdown-item" href="{{route('planificacionCapacitacion')}}"><span class="fa fa-calendar"></span>&nbspPlanificar Capacitación</a>
+                            <a class="dropdown-item" href="{{route('planificacionNivel')}}"><span class="fas fa-grip-lines"></span>&nbspNiveles</a>
+                            <a class="dropdown-item" href="{{route('planificacionCapacitacion')}}"><span class="far fa-calendar-alt"></span>&nbspPlanificar Capacitación</a>
                             <a class="dropdown-item" href=""><span class="fa fa-calendar-check-o"></span>&nbspAsignar Capacitación</a>
 
                         </li>
@@ -85,7 +86,9 @@
                             <a class="dropdown-item" href="{{route('roles')}}"><span class="far fa-id-badge"></span>&nbsp&nbspRol</a>
                             <a class="dropdown-item" href="{{route('escalafon')}}"><span class="icon-file-text"></span>&nbspEscalafón</a>
                             <a class="dropdown-item" href="{{route('facultad')}}"><span class="fas fa-university"></span>&nbspFacultad</a>
-                            <a class="dropdown-item" href="{{route('departamento')}}"><span class="far fa-building"></span>&nbspDepartamento</a>
+                            <a class="dropdown-item" href="{{route('departamento')}}"><span class="fas fa-city"></span>&nbspDepartamento</a>
+                            <a class="dropdown-item" href="{{route('carrera')}}"><span class="far fa-building"></span>&nbspCarrera</a>
+                            <a class="dropdown-item" href="{{route('docente')}}"><span class="fas fa-diagnoses"></span>&nbspDocente</a>
 
                             <!--<a class="dropdown-item" href="{{route('moodleDownload')}}">Agregar Usuario</a>-->
 

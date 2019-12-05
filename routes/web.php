@@ -39,6 +39,13 @@ Route::get('editarEscalafon/{id}','PagesController@editarEscalafon')->name('prof
 Route::put('updateEscalafon/{id}','PagesController@updateEscalafon')->name('profile.updateEscalafon');
 Route::delete('deleteEscalafon/{id}','PagesController@deleteEscalafon')->name('profile.deleteEscalafon');
 
+Route::get('docente','PagesController@docente')->name('docente');
+Route::post('crearDocente','PagesController@crearDocente')->name('profile.crearDocente');
+Route::get('editarDocente/{id}','PagesController@editarDocente')->name('profile.editarDocente');
+Route::put('updateDocente/{id}','PagesController@updateDocente')->name('profile.updateDocente');
+Route::delete('deleteDocente/{id}','PagesController@deleteDocente')->name('profile.deleteDocente');
+
+
 Route::get('facultad','PagesController@facultad')->name('facultad');
 Route::post('crearFacultad','PagesController@crearFacultad')->name('profile.crearFacultad');
 Route::get('editarFacultad/{id}','PagesController@editarFacultad')->name('profile.editarFacultad');
@@ -48,13 +55,19 @@ Route::delete('deleteFacultad/{id}','PagesController@deleteFacultad')->name('pro
 Route::get('departamento','PagesController@departamento')->name('departamento');
 Route::post('crearDepartamento','PagesController@crearDepartamento')->name('profile.crearDepartamento');
 
-
+Route::get('carrera','PagesController@carrera')->name('carrera');
 
 Route::get('planificacionModulo','PagesController@planificacionModulo')->name('planificacionModulo');
 Route::post('crearModulo','PagesController@crearModulo')->name('profile.crearModulo');
 Route::get('editarModulo/{id}','PagesController@editarModulo')->name('profile.editarModulo');
 Route::put('updateModulo/{id}','PagesController@updateModulo')->name('profile.updateModulo');
 Route::delete('deleteModulo/{id}','PagesController@deleteModulo')->name('profile.deleteModulo');
+
+Route::get('planificacionNivel','PagesController@planificacionNivel')->name('planificacionNivel');
+Route::post('crearNivel','PagesController@crearNivel')->name('profile.crearNivel');
+Route::get('editarNivel/{id}','PagesController@editarNivel')->name('profile.editarNivel');
+Route::put('updateNivel/{id}','PagesController@updateNivel')->name('profile.updateNivel');
+Route::delete('deleteNivel/{id}','PagesController@deleteNivel')->name('profile.deleteNivel');
 
 Route::get('usuarios','PagesController@usuarios')->name('usuarios');
 Route::get('editarUsuarios/{id}','PagesController@editarUsuarios')->name('profile.editarUsuarios');

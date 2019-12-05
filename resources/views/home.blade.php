@@ -23,6 +23,7 @@
                         <div class="card text-info bg-info">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item card border-info"><a class="text-info" href="{{route('planificacionModulo')}}"><span class="fas fa-book-open"></span>&nbspMódulos</a></li>
+                            <li class="list-group-item card border-info"><a class="text-info" href="{{route('planificacionNivel')}}"><span class="fas fa-grip-lines"></span>&nbspNiveles</a></li>
                             <li class="list-group-item card border-info"><a class="text-info" href="{{route('planificacionCapacitacion')}}"><span class="fa fa-calendar"></span>&nbspPlanificar Capacitación</a></li>
                             <li class="list-group-item card border-info"><a class="text-info" href=""><span class="fa fa-calendar-check-o"></span>&nbspAsignar Capacitación</a></li>
                         </ul>

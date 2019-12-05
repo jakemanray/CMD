@@ -168,6 +168,67 @@ class PagesController extends Controller
         return back()->with('mensaje','Escalafón Eliminado');
     }
 
+    public function docente(){
+        $tipoDocente=App\Docente::all();
+        $tipoCarrera=App\Carrera::all();
+       // $tipoDocente=App\Docente::paginate(10);
+        return view('docente',compact('tipoDocente','tipoCarrera'));
+    }
+
+    public function crearDocente(Request $request){
+        //return $request->all();
+        $request->validate([
+            'rut'=> 'required',
+            'nombre'=> 'required',
+            'apellido'=> 'required',
+            'sexo'=> 'required',
+            'carrera_id'=> 'required'
+        ]);
+
+        $docenteNuevo=new App\Docente;
+        $docenteNuevo->rut=$request->rut;
+        $docenteNuevo->nombre=$request->nombre;
+        $docenteNuevo->apellido=$request->apellido;
+        $docenteNuevo->sexo=$request->sexo;
+        $docenteNuevo->carrera_id=$request->carrera_id;
+
+        $docenteNuevo->save();
+        return back()->with('mensaje','Docente Agregado');//
+
+    }
+
+    public function editarDocente($id){
+        $tipoDocente=App\Docente::findOrFail($id);
+        $tipoCarrera=App\Carrera::all();
+        return view('profile.editarDocente',compact('tipoDocente','tipoCarrera'));
+    }
+
+    public function updateDocente(Request $request,$id){
+        $request->validate([
+            'rut'=> 'required',
+            'nombre'=> 'required',
+            'apellido'=> 'required',
+            'sexo'=> 'required',
+            'carrera_id'=> 'required'
+        ]);
+
+        $docenteUpdate=App\Docente::findOrFail($id);
+        $docenteUpdate->rut=$request->rut;
+        $docenteUpdate->nombre=$request->nombre;
+        $docenteUpdate->apellido=$request->apellido;
+        $docenteUpdate->sexo=$request->sexo;
+        $docenteUpdate->carrera_id=$request->carrera_id;
+
+        $docenteUpdate->save();
+        return back()->with('mensaje','Docente Actualizado');
+    }
+
+    public function deleteDocente($id){
+        $docenteDelete=App\Docente::findOrFail($id);
+        $docenteDelete->delete();
+        return back()->with('mensaje','Docente Eliminado');
+    }
+
     public function facultad(){
         //$tipoFacultad=App\Facultad::all();
         $tipoFacultad=App\Facultad::paginate(10);
@@ -238,6 +299,14 @@ class PagesController extends Controller
 
     }
 
+    public function carrera(){
+        $tipoFacultad=App\Facultad::all();
+        $tipoDepartamento=App\Departamento::all();
+        $tipoCarrera=App\Carrera::all();
+
+        return view('carrera', compact('tipoCarrera','tipoFacultad','tipoDepartamento'));
+    }
+
     public function usuarios(){
         $tipoUsuario=App\User::all();
         $tipoPerfil=App\Perfil::all();
@@ -275,11 +344,7 @@ class PagesController extends Controller
 
     }
 
-    public function deleteModulo($id){
-        $moduloDelete=App\moduloCapacitacion::findOrFail($id);
-        $moduloDelete->delete();
-        return back()->with('mensaje','Modulo Eliminado');
-    }
+
 
     public function editarModulo($id){
         $tipoModulo=App\moduloCapacitacion::findOrFail($id);
@@ -298,6 +363,58 @@ class PagesController extends Controller
 
         $moduloUpdate->save();
         return back()->with('mensaje','Módulo Actualizado');
+    }
+
+    public function deleteModulo($id){
+        $moduloDelete=App\moduloCapacitacion::findOrFail($id);
+        $moduloDelete->delete();
+        return back()->with('mensaje','Modulo Eliminado');
+    }
+
+    public function planificacionNivel(){
+        $tipoNivel=App\Nivel::all();
+        return view('planificacionNivel',compact('tipoNivel'));
+    }
+
+    public function crearNivel(Request $request){
+        //return $request->all();
+        $request->validate([
+            'nombre'=> 'required',
+            'descripcion'=> 'required'
+        ]);
+
+        $nivelNuevo=new App\Nivel;
+        $nivelNuevo->nombre=$request->nombre;
+        $nivelNuevo->descripcion=$request->descripcion;
+
+        $nivelNuevo->save();
+        return back()->with('mensaje','Nivel Agregado');
+
+    }
+
+    public function editarNivel($id){
+        $tipoNivel=App\Nivel::findOrFail($id);
+        return view('profile.editarNivel',compact('tipoNivel'));
+    }
+
+    public function updateNivel(Request $request,$id){
+        $request->validate([
+            'nombre'=> 'required',
+            'descripcion'=> 'required'
+        ]);
+
+        $nivelUpdate=App\Nivel::findOrFail($id);
+        $nivelUpdate->nombre=$request->nombre;
+        $nivelUpdate->descripcion=$request->descripcion;
+
+        $nivelUpdate->save();
+        return back()->with('mensaje','Nivel Actualizado');
+    }
+
+    public function deleteNivel($id){
+        $nivelDelete=App\Nivel::findOrFail($id);
+        $nivelDelete->delete();
+        return back()->with('mensaje','Nivel Eliminado');
     }
 
     public function planificacionCapacitacion(){
