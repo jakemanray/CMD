@@ -77,3 +77,7 @@ Route::post('crearPlanCapacitacion','PagesController@crearPlanCapacitacion')->na
 Route::get('editarPlanCapacitacion/{id}','PagesController@editarPlanCapacitacion')->name('profile.editarPlanCapacitacion');
 Route::put('updatePlanCapacitacion/{id}','PagesController@updatePlanCapacitacion')->name('profile.updatePlanCapacitacion');
 Route::delete('deletePlanCapacitacion/{id}','PagesController@deletePlanCapacitacion')->name('profile.deletePlanCapacitacion');
+
+Route::get('asignarCapacitacion','PagesController@asignarCapacitacion')->name('asignarCapacitacion');
+Route::get('asignarDocenteCapacitacion','PagesController@asignarDocenteCapacitacion')->name('asignarDocenteCapacitacion');
+Route::get('asignarAsistenciaCapacitacion','PagesController@asignarAsistenciaCapacitacion')->name('asignarAsistenciaCapacitacion');

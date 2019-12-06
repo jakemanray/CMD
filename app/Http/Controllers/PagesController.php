@@ -311,8 +311,9 @@ class PagesController extends Controller
         $tipoUsuario=App\User::all();
         $tipoPerfil=App\Perfil::all();
         $tipoEscalafon=App\Escalafon::all();
+        $tipoRol=App\rols::all();
         //$user=App\Perfil::paginate(5);
-        return view('usuarios',compact('tipoUsuario','tipoPerfil','tipoEscalafon'));
+        return view('usuarios',compact('tipoUsuario','tipoPerfil','tipoEscalafon','tipoRol'));
     }
 
     public function editarUsuarios($id){
@@ -474,5 +475,27 @@ class PagesController extends Controller
         $planCapacitacionDelete=App\PlanCapacitacion::findOrFail($id);
         $planCapacitacionDelete->delete();
         return back()->with('mensaje','Plan de Capacitación Eliminado');
+    }
+
+    public function asignarCapacitacion(){
+        $tipoCapacitacion=App\PlanCapacitacion::all();
+        $tipoModulo=App\moduloCapacitacion::all();
+        $tipoNivel=App\Nivel::all();
+        $tipoUsuario=App\User::all();
+        return view('asignarCapacitacion',compact('tipoCapacitacion','tipoModulo','tipoNivel','tipoUsuario'));
+    }
+
+    public function asignarDocenteCapacitacion(){
+        $tipoCapacitacion=App\PlanCapacitacion::all();
+        $tipoDocente=App\Docente::all();
+        return view('asignarDocenteCapacitacion',compact('tipoCapacitacion','tipoDocente'));
+    }
+
+    public function asignarAsistenciaCapacitacion(){
+        $tipoCapacitacion=App\PlanCapacitacion::all();
+        $tipoDocente=App\Docente::all();
+        $tipoModulo=App\moduloCapacitacion::all();
+
+        return view('asignarAsistenciaCapacitacion',compact('tipoCapacitacion','tipoDocente','tipoModulo'));
     }
 }

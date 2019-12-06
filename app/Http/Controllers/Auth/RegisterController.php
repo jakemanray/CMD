@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Perfil;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -48,12 +49,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'lastName' => ['required', 'string', 'max:255'],
             'nacimiento' => ['required', 'string'],
-            'position' => ['required', 'string'],
-            'escalafon' => ['required', 'string'],
+            'perfil_id' => ['required', 'integer'],
+            'rol_id' => ['required', 'integer'],
+            'escalafon_id' => ['required', 'integer'],
             'titulo' => ['required', 'string', 'max:255'],
             'tipoContrato' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -70,16 +73,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         return User::create([
             'name' => $data['name'],
             'lastName' => $data['lastName'],
             'nacimiento' => $data['nacimiento'],
-            'position' => $data['position'],
-            'escalafon' => $data['escalafon'],
+            'perfil_id' => $data['perfil_id'],
+            'rol_id' => $data['rol_id'],
+            'escalafon_id' => $data['escalafon_id'],
             'titulo' => $data['titulo'],
             'tipoContrato' => $data['tipoContrato'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+
+
         ]);
     }
+
+
 }

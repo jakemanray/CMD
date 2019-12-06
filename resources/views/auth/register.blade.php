@@ -51,25 +51,21 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="position" class="col-md-4 col-form-label text-md-right">{{ __('Cargo') }}</label>
+                            <label for="perfil_id" class="col-md-4 col-form-label text-md-right">{{ __('Perfil') }}</label>
 
                             <div class="col-md-6">
                                 <div class="dropdown">
                                     <div style="float:left">
-                                        <select name="position" id="position" class="form-control">
-                                            <option value="1">Asesor Pedagógico (a)</option>
-                                            <option value="2">Curriculista</option>
-                                            <option value="3">Director (a)</option>
-                                            <option value="4">Evaluador (a)</option>
-                                            <option value="5">Informático</option>
-                                            <option value="6">Metodólogo (a)</option>
-                                            <option value="7">Red Informático</option>
-                                            <option value="8">Secretaria</option>
+                                        <select name="perfil_id" id="perfil_id" class="form-control">
+                                            <option value="" hidden>Perfil</option>
+                                            <option value=1>Informatico</option>
+
+                                        </select>
                                         </select>
 
                                     </div>
                                 </div>
-                                @error('position')
+                                @error('perfil_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -77,13 +73,35 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="escalafon" class="col-md-4 col-form-label text-md-right">{{ __('Escalafón') }}</label>
+                            <label for="rol_id" class="col-md-4 col-form-label text-md-right">{{ __('Rol') }}</label>
 
                             <div class="col-md-6">
                                 <div class="dropdown">
                                     <div style="float:left">
-                                        <select name="escalafon" id="escalafon" class="form-control">
-                                            <option value="1">B1</option>
+                                        <select name="rol_id" id="rol_id" class="form-control">
+                                            <option value="" hidden>Rol</option>
+                                            <option value=0>Ninguno</option>
+
+                                        </select>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                @error('perfil_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="escalafon_id" class="col-md-4 col-form-label text-md-right">{{ __('Escalafón') }}</label>
+
+                            <div class="col-md-6">
+                                <div class="dropdown">
+                                    <div style="float:left">
+                                        <select name="escalafon_id" id="escalafon_id" class="form-control">
+                                            <option value=1>B1</option>
                                             <option value="2">B2</option>
                                             <option value="3">B3</option>
                                             <option value="4">B4</option>
@@ -110,7 +128,7 @@
 
                                     </div>
                                 </div>
-                                @error('escalafon')
+                                @error('escalafon_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

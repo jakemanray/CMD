@@ -20,12 +20,27 @@
                             <!--<center><a href="#" class="btn btn-danger">Acceso</a></center>-->
 
                         </div>
-                        <div class="card text-info bg-info">
+                        <div class="card text-info bg-info" style="font-size:75%">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item card border-info"><a class="text-info" href="{{route('planificacionModulo')}}"><span class="fas fa-book-open"></span>&nbspMódulos</a></li>
+                            <li class="list-group-item card border-info"><a class="text-info"  href="{{route('planificacionModulo')}}"><span class="fas fa-book-open"></span>&nbspMódulos</a></li>
                             <li class="list-group-item card border-info"><a class="text-info" href="{{route('planificacionNivel')}}"><span class="fas fa-grip-lines"></span>&nbspNiveles</a></li>
                             <li class="list-group-item card border-info"><a class="text-info" href="{{route('planificacionCapacitacion')}}"><span class="fa fa-calendar"></span>&nbspPlanificar Capacitación</a></li>
-                            <li class="list-group-item card border-info"><a class="text-info" href=""><span class="fa fa-calendar-check-o"></span>&nbspAsignar Capacitación</a></li>
+                            <li class="list-group-item card border-info"><a class="text-info" href="{{route('asignarDocenteCapacitacion')}}"><span class="far fa-calendar-plus"></span>&nbspAsignar Docente Capacitación</a></li>
+                            <li class="list-group-item card border-info"><a class="text-info" href="{{route('asignarAsistenciaCapacitacion')}}"><span class="fas fa-user-check"></span>&nbspAsignar Asistencia Capacitación</a></li>
+                            <div class="list-group-item card border-info">
+  <button type="button" class="text-info">
+    Split dropright
+  </button>
+  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropright</span>
+  </button>
+  <div class="dropdown-menu">
+  <li class="list-group-item card border-info"><small><a class="text-info" href="{{route('asignarAsistenciaCapacitacion')}}"><span class="fas fa-user-check"></span>&nbspAsignar Asistencia Capacitación</a></small></li>
+  </div>
+</div>
+
+                        </li>
+                            </ul>
                         </ul>
                         </div>
 

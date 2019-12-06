@@ -12,11 +12,11 @@
 
                 <input type="text" name="name" placeholder="Nombre" class="form-control mb-2" value="{{old('name')}}">
                 <input type="text" name="lastName" placeholder="Apellido" class="form-control mb-2" value="{{old('lastName')}}">
-                <input type="date" name="nacimiento" placeholder="Fecha de Nacimiento" class="form-control mb-2" value="{{old('nacimiento')}}">
-
+                <input type="text" name="nacimiento" placeholder="Fecha de Nacimiento" class="form-control mb-2 textbox-n" onfocusin="(this.type='date')" onfocusout="(this.type='text')"  id="date" value="{{old('nacimiento')}}">
                 <div class="form-group row">
                     <div class="col-md-12">
-                        <select name="position" id="position" class="form-control">
+                        <select name="perfil_id" id="perfil_id" class="form-control">
+                        <option value="" hidden>Perfil</option>
                             @foreach($tipoPerfil as $itemPerfil)
                                 <option value="{{$itemPerfil->id}}">{{$itemPerfil->nombre}}</option>
                             @endforeach()
@@ -25,7 +25,18 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-md-12">
-                        <select name="escalafon" id="escalafon" class="form-control">
+                        <select name="position" id="position" class="form-control">
+                        <option value="" hidden>Rol</option>
+                            @foreach($tipoRol as $itemRol)
+                                <option value="{{$itemRol->id}}">{{$itemRol->nombre}}</option>
+                            @endforeach()
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <select name="escalafon_id" id="escalafon_id" class="form-control">
+                            <option value="" hidden>Escalafón</option>
                             @foreach($tipoEscalafon as $itemEscalafon)
                                 <option value="{{$itemEscalafon->id}}">{{$itemEscalafon->nombre}}</option>
                             @endforeach()
@@ -72,7 +83,7 @@
                 <th scope="col-sm-2">{{$item->id}}</th>
                 <td scope="col-sm-2">{{$item->name}}</td>
                 <td scope="col-sm-2">{{$item->lastName}}</td>
-                <td scope="col-sm-2">{{$item->nacimiento}}</td>
+                <td scope="col-sm-2">{{$item->nacimiento->format('d-m-Y')}}</td>
                 <td scope="col-sm-2">{{$item->position}}</td>
                 <td scope="col-sm-2">{{$item->escalafon}}</td>
                 <td scope="col-sm-2">{{$item->titulo}}</td>

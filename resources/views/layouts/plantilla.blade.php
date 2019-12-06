@@ -64,7 +64,16 @@
                             <a class="dropdown-item" href="{{route('planificacionModulo')}}"><span class="fas fa-book-open"></span>&nbspMódulos</a>
                             <a class="dropdown-item" href="{{route('planificacionNivel')}}"><span class="fas fa-grip-lines"></span>&nbspNiveles</a>
                             <a class="dropdown-item" href="{{route('planificacionCapacitacion')}}"><span class="far fa-calendar-alt"></span>&nbspPlanificar Capacitación</a>
-                            <a class="dropdown-item" href=""><span class="fa fa-calendar-check-o"></span>&nbspAsignar Capacitación</a>
+                            <a class="dropdown-item" href="{{route('asignarCapacitacion')}}"><span class="fa fa-calendar-check-o"></span>&nbspAsignar Informacion Plan Capacitación</a>
+                            <a class="dropdown-item" href="{{route('asignarDocenteCapacitacion')}}"><span class="far fa-calendar-plus"></span>&nbspAsignar Docente Capacitación</a>
+                            <a class="dropdown-item" href="{{route('asignarAsistenciaCapacitacion')}}"><span class="fas fa-user-check"></span>&nbspAsignar Asistencia Capacitación</a>
+                            <ul class="dropdown-menu">
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:black; font-size:100%; padding: 15px 20px">
+                            <span class="fas fa-chalkboard-teacher"></span>&nbspCapacitación
+                            </a>
+                            </li>
+                            </ul
 
                         </li>
                         <li class="nav-item dropdown">
@@ -94,6 +103,7 @@
 
                         </li>
 
+
                         <!--<li class="nav-item active"><a href="{{route('administrador')}}" class="nav-link" style="font-size:100%; padding: 15px 20px"><span class="icon-user-check"></span>&nbspAdministrador</a></li>-->
                     </ul>
 
@@ -118,7 +128,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();"><span class="fas fa-sign-out-alt"></span>
                                         {{ __('Cerrar Sesión') }}
                                     </a>
 
