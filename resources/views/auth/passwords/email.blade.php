@@ -34,7 +34,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Envio de Contraseña Reiniciada Link') }}
+                                    {{ __('Envio de Contraseña Reiniciada') }}
                                 </button>
                             </div>
                         </div>

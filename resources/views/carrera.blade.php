@@ -69,12 +69,12 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach($tipoCarrera as $item)
+            @foreach($tipoCarrera as $itemCarrera)
                 <tr>
-                <th scope="row">{{$item->id}}</th>
-                <td>{{$item->nombre}}</td>
-                <td>{{$item->departamento->nombre}}</td>
-                <td>{{$item->departamento->facultad->nombre}}</td>
+                <th scope="row">{{$itemCarrera->id}}</th>
+                <td>{{$itemCarrera->nombre}}</td>
+                <td>{{$itemCarrera->departamento->nombre}}</td>
+                <td>{{$itemCarrera->departamento->facultad->nombre}}</td>
                 <td>
                 <a href="" class="btn btn-outline-success btn-sm"><span class="fas fa-pen"></span>&nbspEditar</a>
                 <form action="" method="POST" class="d-inline">

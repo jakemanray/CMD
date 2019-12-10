@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'lastName','nacimiento','position','escalafon','titulo','tipoContrato','email', 'password'
+        'name', 'lastName','nacimiento','perfil_id','rol_id','escalafon_id','titulo','tipoContrato','email', 'password'
     ];
 
     /**
@@ -38,4 +38,16 @@ class User extends Authenticatable
     ];
 
     protected $dates = ['nacimiento'];
+
+    public function perfil(){ //$user->perfil->nombre
+        return $this->belongsTo(Perfil::class); //Pertenece a una categoría.
+    }
+
+    public function rol(){ //$user->escalafon->nombre
+        return $this->belongsTo(rols::class); //Pertenece a una categoría.
+    }
+
+    public function escalafon(){ //$user->escalafon->nombre
+        return $this->belongsTo(Escalafon::class); //Pertenece a una categoría.
+    }
 }

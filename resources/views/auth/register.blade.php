@@ -81,7 +81,7 @@
                                         <select name="rol_id" id="rol_id" class="form-control">
                                             <option value="" hidden>Rol</option>
                                             <option value=0>Ninguno</option>
-
+                                            <option value=1>Asesor</option>
                                         </select>
                                         </select>
 

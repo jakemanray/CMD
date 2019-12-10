@@ -131,6 +131,9 @@
                                                      document.getElementById('logout-form').submit();"><span class="fas fa-sign-out-alt"></span>
                                         {{ __('Cerrar Sesión') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{route('cambioContraseña')}}"><span class="fas fa-unlock-alt"></span>
+                                        {{ __('Cambiar Contraseña') }}
+                                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf

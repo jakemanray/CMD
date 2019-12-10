@@ -7,7 +7,7 @@
     </div>
     <div class="card-body">
         <div class="container my-4">
-        <form action="" method="POST">
+        <form action="{{route('profile.crearAsignarCapacitacion')}}" method="POST">
             @csrf
             <div class="form-group row">
                 <div class="col-md-12">
@@ -35,23 +35,24 @@
                 <tr>
                 <th scope="row">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <input class="form-check-input" type="checkbox" name="modulo_id[]" id="modulo_id" value={{$item->id}}>
                     <label class="form-check-label" for="inlineCheckbox1">{{$item->id}}</label>
                 </div>
                 </th>
                 <td>{{$item->nombre}}</td>
 
                 <td>
-                        <select name="capacitador_id" id="capacitador_id" class="form-control-2">
+                <div class="form-check form-check-inline">
+                        <select name="capacitador_id[]" id="capacitador_id" class="form-control-2">
                         @foreach($tipoUsuario as $itemUsuario)
                                 <option value={{$itemUsuario->id}}>{{$itemUsuario->name}}</option>
                         @endforeach
 
                         </select>
-
+                </div>
                 </td>
                 <td>
-                        <select name="nivel_id" id="nivel_id" class="form-control-2">
+                        <select name="nivel_id[]" id="nivel_id" class="form-control-2">
                         @foreach($tipoNivel as $itemNivel)
                                 <option value={{$itemNivel->id}}>{{$itemNivel->nombre}}</option>
                         @endforeach
@@ -59,7 +60,7 @@
 
                 </td>
                 <td>
-                        <select name="modalidad" id="modalidad" class="form-control-2">
+                        <select name="modalidad[]" id="modalidad" class="form-control-2">
                             <option value="PRESENCIAL">PRESENCIAL</option>
                             <option value="B-LEARNING">B-LEARNING</option>
                             <option value="E-LEARNING">E-LEARNING</option>
@@ -70,6 +71,7 @@
             @endforeach()
             </tbody>
             </table>
+            <button class="btn btn-secondary btn-block" type="submit">Agregar</button>
             </form>
         </div>
     </div>

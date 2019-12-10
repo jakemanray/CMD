@@ -15,6 +15,7 @@
 Auth::routes();
 Route::get('/', 'PagesController@inicio')->name('inicio');
 
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('moodleLoad','PagesController@moodleLoad')->name('moodleLoad');
 Route::get('moodleDownload','PagesController@moodleDownload')->name('moodleDownload');
@@ -70,6 +71,8 @@ Route::put('updateNivel/{id}','PagesController@updateNivel')->name('profile.upda
 Route::delete('deleteNivel/{id}','PagesController@deleteNivel')->name('profile.deleteNivel');
 
 Route::get('usuarios','PagesController@usuarios')->name('usuarios');
+Route::get('cambioContraseña','PagesController@cambioContraseña')->name('cambioContraseña');
+Route::post('updatePassword','PagesController@updatePassword')->name('updatePassword');
 Route::get('editarUsuarios/{id}','PagesController@editarUsuarios')->name('profile.editarUsuarios');
 
 Route::get('planificacionCapacitacion','PagesController@planificacionCapacitacion')->name('planificacionCapacitacion');
@@ -81,3 +84,5 @@ Route::delete('deletePlanCapacitacion/{id}','PagesController@deletePlanCapacitac
 Route::get('asignarCapacitacion','PagesController@asignarCapacitacion')->name('asignarCapacitacion');
 Route::get('asignarDocenteCapacitacion','PagesController@asignarDocenteCapacitacion')->name('asignarDocenteCapacitacion');
 Route::get('asignarAsistenciaCapacitacion','PagesController@asignarAsistenciaCapacitacion')->name('asignarAsistenciaCapacitacion');
+
+Route::post('crearAsignarCapacitacion','PagesController@crearAsignarCapacitacion')->name('profile.crearAsignarCapacitacion');

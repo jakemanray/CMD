@@ -13,14 +13,38 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        Schema::create('perfils', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->string('descripcion');
+            $table->timestamps();
+        });
+        Schema::create('rols', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->string('descripcion');
+            $table->timestamps();
+        });
+
+        Schema::create('escalafons', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->string('descripcion');
+            $table->integer('sueldo');
+            $table->timestamps();
+        });
+
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('lastName');
             $table->date('nacimiento');
-            $table->unsignedInteger('perfil_id');
-            $table->unsignedInteger('rol_id');
-            $table->unsignedInteger('escalafon_id');
+            $table->unsignedBigInteger('perfil_id');
+            $table->foreign('perfil_id')->references('id')->on('perfils');
+            $table->unsignedBigInteger('rol_id');
+            $table->foreign('rol_id')->references('id')->on('rols');
+            $table->unsignedBigInteger('escalafon_id');
+            $table->foreign('escalafon_id')->references('id')->on('escalafons');
             $table->string('titulo');
             $table->enum('tipoContrato',['Contrata','Honorario','Planta']);
             $table->string('email')->unique();
@@ -39,5 +63,8 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('escalafons');
+        Schema::dropIfExists('rols');
+        Schema::dropIfExists('perfils');
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateDepartamentosTable extends Migration
+class CreateCarrerasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -23,10 +23,19 @@ class CreateDepartamentosTable extends Migration
         Schema::create('departamentos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->unsignedBigInteger('facultad_id'); // Relación con categorias
+            $table->unsignedBigInteger('facultad_id');
             $table->foreign('facultad_id')->references('id')->on('facultads'); // clave foranea
             $table->timestamps();
         });
+
+        Schema::create('carreras', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->unsignedBigInteger('departamento_id');
+            $table->foreign('departamento_id')->references('id')->on('departamentos'); // clave foranea
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -36,7 +45,9 @@ class CreateDepartamentosTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('carreras');
         Schema::dropIfExists('departamentos');
         Schema::dropIfExists('facultads');
+
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateDocentesTable extends Migration
 {
@@ -20,8 +20,10 @@ class CreateDocentesTable extends Migration
             $table->string('apellido');
             $table->enum('sexo', ['Femenino','Masculino','Otro']);
             $table->unsignedBigInteger('carrera_id'); // Relación con carrera
+            $table->foreign('carrera_id')->references('id')->on('carreras');
             $table->timestamps();
         });
+
     }
 
     /**

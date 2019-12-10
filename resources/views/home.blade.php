@@ -4,12 +4,16 @@
 <div class="container mt-5">
     <div class="card">
         <div class="card-header"><center><h3>Áreas CMD</h3></center></div>
-            <div class=" card-body row mt-5 justify-content-center">
-                @if (session('status'))
+            @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                @endif
+            @endif
+            <div class=" card-body row mt-5 justify-content-center">
+
                 <div class="col cols=12 md-4">
                     <div class="card text-white bg-info mb-2" style="width: 15rem;">
                         <div class="card-header"><h3 class="text-center">Capacitación</h3></div>
