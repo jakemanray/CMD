@@ -55,6 +55,8 @@ Route::delete('deleteFacultad/{id}','PagesController@deleteFacultad')->name('pro
 
 Route::get('departamento','PagesController@departamento')->name('departamento');
 Route::post('crearDepartamento','PagesController@crearDepartamento')->name('profile.crearDepartamento');
+Route::get('editarDepartamento/{id}','PagesController@editarDepartamento')->name('profile.editarDepartamento');
+Route::delete('deleteDepartamento/{id}','PagesController@deleteDepartamento')->name('profile.deleteDepartamento');
 
 Route::get('carrera','PagesController@carrera')->name('carrera');
 

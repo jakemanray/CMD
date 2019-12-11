@@ -26,7 +26,7 @@
                         </button>
                     </div>
                 @enderror
-                @error('descripcion')
+                @error('facultad_id')
                     <div class="alert alert-danger">
                         La Facultad es obligatoria
                         <button type="button" class="close" data-dismiss="alert" aria-label="close">
@@ -65,8 +65,8 @@
                 <td scope="row">{{$item->nombre}}</td>
                 <td scope="row">{{$item->facultad->nombre}}</td>
                 <td>
-                <a href="" class="btn btn-outline-success btn-sm"><span class="fas fa-pen"></span>&nbspEditar</a>
-                <form action="" method="POST" class="d-inline">
+                <a href="{{route('profile.editarDepartamento',$item)}}" class="btn btn-outline-success btn-sm"><span class="fas fa-pen"></span>&nbspEditar</a>
+                <form action="{{route('profile.deleteDepartamento',$item)}}" method="POST" class="d-inline">
                     @method('DELETE')
                     @csrf
                     <button class="btn btn-outline-danger btn-sm" type="submit"><span class="icon-bin"></span>&nbspEliminar</button>

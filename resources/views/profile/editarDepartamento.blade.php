@@ -3,49 +3,57 @@
 @section('content')
 <div class="card text-center">
     <div class="card-header">
-        <h3 class="card-title">ADMINISTRADOR: Actualización de Datos Escalafón</h3>
+        <h3 class="card-title">ADMINISTRADOR: Actualización de Datos de Departamento</h3>
     </div>
     <div class="card-body">
         <div class="container my-4">
             @if (session('mensaje'))
                 <div class="alert alert-success">
                     {{session('mensaje')}}
+
                     <button type="button" class="close" data-dismiss="alert" aria-label="close">
                         <span aria-hidden="true">&times;</span>
+
+
+
                     </button>
-                    <div class="d-inline" style="text-align:rigth"><a href="{{route('escalafon')}}" class="btn btn-outline-success" >Volver</a></div>
+                    <div class="d-inline" style="text-align:rigth"><a href="{{route('departamento')}}" class="btn btn-outline-success" >Volver</a></div>
                 </div>
+
             @endif
-            <form action="{{route('profile.updateEscalafon',$tipoEscalafon->id)}}" method="POST">
+            <form action="" method="POST">
                 @method('PUT')
                 @csrf
                 @error('nombre')
                     <div class="alert alert-danger">
-                        El nombre es obligatorio
+                        El nombre de departamento obligatorio
                         <button type="button" class="close" data-dismiss="alert" aria-label="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                 @enderror
-                @error('descripcion')
+                @error('facultad_id')
                     <div class="alert alert-danger">
-                        La descripcion es obligatoria
+                        La Facultad es obligatoria
                         <button type="button" class="close" data-dismiss="alert" aria-label="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                 @enderror
-                @error('sueldo')
-                    <div class="alert alert-danger">
-                        El sueldo es obligatorio
-                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+
+                <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" value="{{$tipoDepartamento->nombre}}">
+
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <select name="facultad_id" id="facultad_id" class="form-control">
+                        <option selected value={{$tipoDepartamento->facultad->id}}>{{$tipoDepartamento->facultad->nombre}}</option>
+                        @foreach($tipoFacultad as $item)
+                                <option value={{$item->id}}>{{$item->nombre}}</option>
+                        @endforeach
+                        </select>
                     </div>
-                @enderror
-                <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" value="{{$tipoEscalafon->nombre}}">
-                <input type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2" value="{{$tipoEscalafon->descripcion}}">
-                <input type="text" name="sueldo" placeholder="Sueldo" class="form-control mb-2" value="{{$tipoEscalafon->sueldo}}">
+                </div>
                 <button class="btn btn-secondary btn-block">Actualizar</button>
             </form>
         </div>

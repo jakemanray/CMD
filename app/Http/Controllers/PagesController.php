@@ -300,6 +300,18 @@ class PagesController extends Controller
 
     }
 
+    public function editarDepartamento($id){
+        $tipoDepartamento=App\Departamento::findOrFail($id);
+        $tipoFacultad=App\Facultad::all();
+        return view('profile.editarDepartamento',compact('tipoDepartamento','tipoFacultad'));
+    }
+
+    public function deleteDepartamento($id){
+        $departamentoDelete=App\Departamento::findOrFail($id);
+        $departamentoDelete->delete();
+        return back()->with('mensaje','Departamento Eliminado');
+    }
+
     public function carrera(){
         $tipoFacultad=App\Facultad::all();
         $tipoDepartamento=App\Departamento::all();
