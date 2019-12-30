@@ -1,6 +1,7 @@
 @extends('layouts.plantilla')
 
 @section('content')
+@inject('facultades', 'App\Services\Facultades')
 <div class="card text-center">
     <div class="card-header">
         <h3 class="card-title">ADMINISTRADOR: Ingreso de Datos de Carrera</h3>
@@ -16,7 +17,7 @@
                 </button>
             </div>
         @endif
-        <form action="" method="POST">
+        <form action="{{route('profile.crearCarrera')}}" method="POST">
                 @csrf
                 @error('nombre')
                     <div class="alert alert-danger">
@@ -26,7 +27,15 @@
                         </button>
                     </div>
                 @enderror
-                @error('descripcion')
+                @error('facultad_id')
+                    <div class="alert alert-danger">
+                        La Facultad es obligatorio
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @enderror
+                @error('departamento_id')
                     <div class="alert alert-danger">
                         El departamento es obligatorio
                         <button type="button" class="close" data-dismiss="alert" aria-label="close">
@@ -35,27 +44,32 @@
                     </div>
                 @enderror
 
+
+
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+
+                        <select v-model='selected_facultad' @change="loadDepartamentos" id="facultad_id" data-old="{{ old('facultad_id') }}"name="facultad_id" class="form-control{{ $errors->has('facultad_id') ? ' is-invalid' : '' }}">
+                            @foreach($facultades->get() as $index => $facultad)
+                                <option value="{{ $index }}">
+                                    {{ $facultad }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <select v-model="selected_departamento" id="departamento_id" data-old="{{ old('departamento_id') }}" name="departamento_id" class="form-control{{ $errors->has('departamento_id') ? ' is-invalid' : '' }}">
+                            <option value="">Selecciona una Departamento</option>
+                            <option v-for="(departamento, index) in departamentos" v-bind:value="index">
+                                @{{departamento}}
+                            </option>>
+                        </select>
+                    </div>
+                </div>
                 <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" value="{{old('nombre')}}">
-
-
-                <div class="form-group row">
-                    <div class="col-md-12">
-                        <select name="id" id="id" class="form-control">
-                        @foreach($tipoFacultad as $item)
-                                <option value={{$item->id}}>{{$item->nombre}}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-12">
-                        <select name="id" id="id" class="form-control">
-                        @foreach($tipoDepartamento as $item)
-                                <option value={{$item->id}}>{{$item->nombre}}</option>
-                        @endforeach
-                        </select>
-                    </div>
-                </div>
                 <button class="btn btn-secondary btn-block">Agregar</button>
             </form>
             <table class="table table-responsive-sm">
@@ -69,22 +83,22 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach($tipoCarrera as $itemCarrera)
+            @foreach($tipoCarrera as $item)
                 <tr>
-                <th scope="row">{{$itemCarrera->id}}</th>
-                <td>{{$itemCarrera->nombre}}</td>
-                <td>{{$itemCarrera->departamento->nombre}}</td>
-                <td>{{$itemCarrera->departamento->facultad->nombre}}</td>
+                <th scope="row">{{$item->id}}</th>
+                <td>{{$item->nombre}}</td>
+                <td>{{$item->departamento->nombre}}</td>
+                <td>{{$item->departamento->facultad->nombre}}</td>
                 <td>
-                <a href="" class="btn btn-outline-success btn-sm"><span class="fas fa-pen"></span>&nbspEditar</a>
-                <form action="" method="POST" class="d-inline">
+                <a href="{{route('profile.editarCarrera',$item)}}" class="btn btn-outline-success btn-sm"><span class="fas fa-pen"></span>&nbspEditar</a>
+                <form action="{{route('profile.deleteCarrera',$item)}}" method="POST" class="d-inline">
                     @method('DELETE')
                     @csrf
                     <button class="btn btn-outline-danger btn-sm" type="submit"><span class="icon-bin"></span>&nbspEliminar</button>
                 </form>
                 </td>
                 </tr>
-            @endforeach()
+            @endforeach
             </tbody>
             </table>
         </div>

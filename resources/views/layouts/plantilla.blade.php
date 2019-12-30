@@ -67,6 +67,7 @@
                             <a class="dropdown-item" href="{{route('asignarCapacitacion')}}"><span class="fa fa-calendar-check-o"></span>&nbspAsignar Informacion Plan Capacitación</a>
                             <a class="dropdown-item" href="{{route('asignarDocenteCapacitacion')}}"><span class="far fa-calendar-plus"></span>&nbspAsignar Docente Capacitación</a>
                             <a class="dropdown-item" href="{{route('asignarAsistenciaCapacitacion')}}"><span class="fas fa-user-check"></span>&nbspAsignar Asistencia Capacitación</a>
+                            <a class="dropdown-item" href="{{route('listarModuloCapacitacion')}}"><span class="fas fa-tasks"></span>&nbspListar Informacion de Capacitación</a>
                             <ul class="dropdown-menu">
                             <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:black; font-size:100%; padding: 15px 20px">

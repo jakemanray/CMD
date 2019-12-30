@@ -1,9 +1,10 @@
 @extends('layouts.plantilla')
 
 @section('content')
+@inject('facultades', 'App\Services\Facultades')
 <div class="card text-center">
     <div class="card-header">
-        <h3 class="card-title">ADMINISTRADOR: Actualización de Datos de Departamento</h3>
+        <h3 class="card-title">ADMINISTRADOR: Actualización de Datos de Carrera</h3>
     </div>
     <div class="card-body">
         <div class="container my-4">
@@ -17,11 +18,11 @@
 
 
                     </button>
-                    <div class="d-inline" style="text-align:rigth"><a href="{{route('departamento')}}" class="btn btn-outline-success" >Volver</a></div>
+                    <div class="d-inline" style="text-align:rigth"><a href="{{route('carrera')}}" class="btn btn-outline-success" >Volver</a></div>
                 </div>
 
             @endif
-            <form action="{{route('profile.updateDepartamento',$tipoDepartamento->id)}}" method="POST">
+            <form action="" method="POST">
                 @method('PUT')
                 @csrf
                 @error('nombre')
@@ -40,20 +41,40 @@
                         </button>
                     </div>
                 @enderror
+                @error('departamento_id')
+                    <div class="alert alert-danger">
+                        El Departamento es obligatorio
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @enderror
 
-                <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" value="{{$tipoDepartamento->nombre}}">
+                <div class="form-group row">
+                    <div class="col-md-12">
+
+                        <select v-model='selected_facultad' @change="loadDepartamentos" id="facultad_id" name="facultad_id" class="form-control{{ $errors->has('facultad_id') ? ' is-invalid' : '' }}">
+                            @foreach($facultades->get() as $index => $facultad)
+                                <option value="{{ $index }}">
+                                    {{ $facultad }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
 
                 <div class="form-group row">
                     <div class="col-md-12">
-                        <select name="facultad_id" id="facultad_id" class="form-control" data-old="{{$tipoDepartamento->facultad->nombre}}">
-                        <option selected value={{$tipoDepartamento->facultad->id}}>{{$tipoDepartamento->facultad->nombre}}</option>
-                        @foreach($tipoFacultad as $item)
-                                <option value={{$item->id}}>{{$item->nombre}}</option>
-                        @endforeach
+                        <select v-model="selected_departamento" id="departamento_id"  name="departamento_id" class="form-control{{ $errors->has('departamento_id') ? ' is-invalid' : '' }}">
+                            <option value="">Selecciona una Departamento</option>
+                            <option v-for="(departamento, index) in departamentos" v-bind:value="index">
+                                @{{departamento}}
+                            </option>>
                         </select>
                     </div>
                 </div>
+                <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" value="{{$tipoCarrera->nombre}}">
                 <button class="btn btn-secondary btn-block">Actualizar</button>
             </form>
         </div>

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use App\Carrera;
+use App\Departamento;
+use App\AsignarModuloPlanCapacitacion;
 use Hash;
 
 class PagesController extends Controller
@@ -306,6 +309,20 @@ class PagesController extends Controller
         return view('profile.editarDepartamento',compact('tipoDepartamento','tipoFacultad'));
     }
 
+    public function updateDepartamento(Request $request,$id){
+        $request->validate([
+            'nombre'=> 'required',
+            'facultad_id'=> 'required'
+        ]);
+
+        $facultadUpdate=App\Departamento::findOrFail($id);
+        $facultadUpdate->nombre=$request->nombre;
+        $facultadUpdate->facultad_id=$request->facultad_id;
+
+        $facultadUpdate->save();
+        return back()->with('mensaje','Departamento Actualizado');
+    }
+
     public function deleteDepartamento($id){
         $departamentoDelete=App\Departamento::findOrFail($id);
         $departamentoDelete->delete();
@@ -318,6 +335,33 @@ class PagesController extends Controller
         $tipoCarrera=App\Carrera::all();
 
         return view('carrera', compact('tipoCarrera','tipoFacultad','tipoDepartamento'));
+    }
+
+    public function crearCarrera(Request $request){
+        //return $request->all();
+        $request->validate([
+            'nombre'=> 'required',
+            'departamento_id'=> 'required'
+        ]);
+
+        $carreraNuevo=new Carrera;
+        $carreraNuevo->nombre=$request->nombre;
+        $carreraNuevo->departamento_id=$request->departamento_id;
+
+        $carreraNuevo->save();
+        return back()->with('mensaje','Carrera Agregada');
+
+    }
+    public function editarCarrera($id){
+        $tipoCarrera=Carrera::findOrFail($id);
+        $tipoFacultad=App\Facultad::all();
+        $tipoDepartamento=Departamento::all();
+        return view('profile.editarCarrera',compact('tipoCarrera','tipoFacultad','tipoDepartamento'));
+    }
+    public function deleteCarrera($id){
+        $carreraDelete=Carrera::findOrFail($id);
+        $carreraDelete->delete();
+        return back()->with('mensaje','Carrera Eliminada');
     }
 
     public function usuarios(){
@@ -553,7 +597,32 @@ class PagesController extends Controller
 
     public function crearAsignarCapacitacion(Request $request){
         return $request->all();
+        //$request->validate([
+        //    'plan_capacitacion_id'=> 'required',
+        //    'modulo_capacitacion_id'=> 'required',
+        //    'nivel_id'=> 'required',
+        //    'user_id'=> 'required',
+        //    'modalidad'=> 'required'
+        //]);
+        //$tipoAsignarModuloCapacitacion=new AsignarModuloPlanCapacitacion;
+        //$tipoAsignarModuloCapacitacion->attach($request->all());
+        //return back()->with('mensaje','Modulos Asignados');
 
 
+    }
+
+    public function listarModuloCapacitacion(){
+        return view('listarCapacitacion');
+    }
+
+    public function getCareers(Request $request)
+    {
+        if ($request->ajax()) {
+            $departamentos = Departamento::where('facultad_id', $request->facultad_id)->get();
+            foreach ($departamentos as $departamento) {
+                $departamentosArray[$departamento->id] = $departamento->nombre;
+            }
+            return response()->json($departamentosArray);
+        }
     }
 }
